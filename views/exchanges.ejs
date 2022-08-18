@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="home">
+            <div class="logout"></div>
+        </div>
+    </nav>
+    <div class="message">
+        <%= message %></div>
+        <div class="main">
+            <h1>
+                your exchanges 
+            </h1>
+            <div class="list">
+                <% for(var i = 0; i < user.exchanges.length; i++) { %>
+                    <div><a href="/exchanges/<%=user.exchangesId[i] %>"><%=user.exchanges[i] %></a></div>
+                    <% } %> 
+                    </div>
+                    <div class="forms">
+                        <form action="/exchanges/" method="post">
+                            <input type="text" name="name" placeholder="Name" required>
+                            <input type="text" name="budget" placeholder="Amount in rupees" required>
+                            <input type="date" name="date" required>
+                            <input type="text" name="location" placeholder="Location" required>
+                            <button type="submit" name="submit">submit</button>
+                        </form>
+                        <form id="join" action="/" method="post">
+                            <h1 id="test"></h1>
+                            <input type="text"  id="input" name="name" placeholder="Name" required>
+                            <button type="submit">submit</button>
+                        </form>
+
+                    </div>
+
+                    <script>
+                        const form = document.getElementById("join");
+                        input = document.getElementById("input")
+                        input.addEventListener("change", function(event) {
+                            form.action = "/exchanges/" + input.value;
+                        });
+
+                    </script>
+</body>
+</html>
